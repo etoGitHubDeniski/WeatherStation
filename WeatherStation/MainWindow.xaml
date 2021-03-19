@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WeatherStation"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
         
+        WindowStartupLocation="CenterScreen"
+        WindowState="Normal" WindowStyle="None"
+        Background="Red" AllowsTransparency="True"
+        SizeChanged="Window_SizeChanged"
+        
+        Icon="Resourses/Image/Icon/Icon.png"
+        Title="Weather Station" Height="810" Width="1440">
+
+    <!-- Удаление верхней белой Resize полоски с оставлением функционала Resize -->
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="28"/>
+    </WindowChrome.WindowChrome>
+
+    <Grid Name="GridMain">
+        <!-- Разметка -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Основной фрейм -->
+        <Frame Name="FrmMain" Grid.Row="1" Margin="0,-1,0,0"
+               NavigationUIVisibility="Hidden" Focusable="False">
+        </Frame>
+        <!-- Верхний бар -->
+        <Border Background="#353535"/>
+
+        <!-- Верхние кнопки -->
+        <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right"
+                    Orientation="Horizontal" Margin="0,-1,0,0">
+            <Button Name="BtnRollUp" Content="&#xE921;" ToolTip="Свернуть"
+                    Click="BtnRollUp_Click" 
+                    Style="{StaticResource ButtonTopBarStyle}"
+                    Template="{DynamicResource ButtonTopBarControlTemplate}"/>
+            <Button Name="BtnWinState" Content="&#xE922;" ToolTip="Развернуть"
+                    Click="BtnWinState_Click" 
+                    Style="{StaticResource ButtonTopBarStyle}"
+                    Template="{DynamicResource ButtonTopBarControlTemplate}"/>
+            <Button Name="BtnClose" Content="&#xE8BB;" ToolTip="Закрыть"
+                    Click="BtnClose_Click"
+                    Style="{StaticResource ButtonTopBarStyle}"
+                    Template="{DynamicResource ButtonCloseControlTemplate}"/>
+        </StackPanel>
     </Grid>
 </Window>

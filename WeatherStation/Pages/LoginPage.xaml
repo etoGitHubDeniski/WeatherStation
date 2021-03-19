@@ -1,0 +1,69 @@
+﻿<Page x:Class="WeatherStation.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WeatherStation.Pages"
+      mc:Ignorable="d" 
+      Background="#404040"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="LoginPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+            <!-- username -->
+            <StackPanel>
+                <TextBlock Style="{StaticResource TextBlockLoginHeaderStyle}"
+                           Text="login"/>
+                <StackPanel Orientation="Horizontal" Width="300" Height="35">
+                    <TextBlock Style="{StaticResource TextBlockLoginIconStyle}"
+                               Text="&#xE13D;"/>
+                    <TextBox Style="{StaticResource TextBoxLoginStyle}"
+                             Name="TxbLoginLogin"/>
+                </StackPanel>
+                <Rectangle Style="{StaticResource RectangleStyle}"/>
+            </StackPanel>
+
+            <!-- password -->
+            <StackPanel Margin="0,10,0,0">
+                <TextBlock Style="{StaticResource TextBlockLoginHeaderStyle}"
+                           Text="password"/>
+                <StackPanel Orientation="Horizontal" Width="300" Height="35">
+                    <TextBlock Style="{StaticResource TextBlockLoginIconStyle}"
+                               Text="&#xE192;"/>
+                    <PasswordBox Style="{StaticResource PasswordBoxLoginStyle}"
+                                 Name="PsbPasswordLogin"/>
+                </StackPanel>
+                <Rectangle Style="{StaticResource RectangleStyle}"/>
+            </StackPanel>
+
+            <!-- Remember me -->
+            <StackPanel Margin="0,10,0,0">
+                <CheckBox Name="ChbRemember" Content="Remember me" 
+                          Margin="10,0,0,0"
+                          Checked="ChbRemember_Checked"
+                          Unchecked="ChbRemember_Unchecked"
+                          Style="{StaticResource CheckBoxRememberStyle}"/>
+            </StackPanel>
+
+            <!-- login button -->
+            <Button Name="BtnLogin" Margin="0,40,0,0"
+                    Style="{StaticResource ButtonLoginStyle}"
+                    Template="{DynamicResource ButtonLoginControlTemplate}"
+                    Click="BtnLogin_Click"/>
+
+            <!-- sign up button -->
+            <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Orientation="Horizontal" Margin="0,20,0,0">
+                <TextBlock Style="{StaticResource TextBlockLoginStyle}"
+                           Text="Are you a newbie?" FontSize="14"
+                           FontStyle="Italic"/>
+                <Button Name="BtnSignUp" Content="SIGN UP"
+                        Style="{StaticResource ButtonSignUpStyle}"
+                        Template="{DynamicResource ButtonSignUpControlTemplate}"
+                        Click="BtnSignUp_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
