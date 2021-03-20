@@ -33,10 +33,10 @@ namespace WeatherStation.Pages
                     device => device.IdStatus,
                     status => status.Id,
                     (device, status) => new { Device = device, Status = status })
-                .Join(ControlClass.WeatherStationDataBase.State,
-                    device => device.IdState,
-                    state => state.Id,
-                    (device, state) => new { Device = device, State = state })
+                //.Join(ControlClass.WeatherStationDataBase.State,
+                //    device => device.IdState,
+                //    state => state.Id,
+                //    (device, state) => new { Device = device, State = state })
                 .Select(x => new {
                     Name = x.Device.Name,
                     Designation = x.Device.Designation,
