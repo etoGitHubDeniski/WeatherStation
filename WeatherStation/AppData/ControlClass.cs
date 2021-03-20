@@ -14,4 +14,9 @@ namespace WeatherStation.AppData
         public static WeatherStationAuthorizationEntities WeatherStationAuthorizationDataBase;
         public static WeatherStationEntities WeatherStationDataBase;
     }
+
+    class AccountHelpClass
+    {
+        public static int Id { get; set; }
+    }
 }

@@ -48,7 +48,7 @@ namespace WeatherStation.Pages
                 User user = ControlClass.WeatherStationAuthorizationDataBase.User.FirstOrDefault(x => x.Login == TxbLoginLogin.Text && x.Password == PsbPasswordLogin.Password);
                 if (user != null)
                 {
-                    MessageBox.Show("Вы вошли");
+                    ControlClass.FrameMain.Navigate(new MainMenuPage());
                 }
                 else
                 {
@@ -75,6 +75,7 @@ namespace WeatherStation.Pages
             Properties.Settings.Default.Save();
         }
 
+        // Очистка сохраненных данных
         private void ChbRemember_Unchecked(object sender, RoutedEventArgs e)
         {
             Properties.Settings.Default.LoginRemember = string.Empty;
