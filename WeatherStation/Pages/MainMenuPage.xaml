@@ -26,10 +26,15 @@
                     Template="{DynamicResource ButtonLoginControlTemplate}"
                     Click="BtnLookData_Click"/>
             <Button Name="LogOut" Content="Выйти из аккаунта"
-                    Margin="0,20,0,0"
+                    Margin="0,80,0,0"
                     Style="{StaticResource ButtonLoginStyle}"
                     Template="{DynamicResource ButtonLoginControlTemplate}"
                     Click="LogOut_Click"/>
+            <Button Name="Exit" Content="Выйти на рабочий стол"
+                    Margin="0,20,0,0"
+                    Style="{StaticResource ButtonLoginStyle}"
+                    Template="{DynamicResource ButtonLoginControlTemplate}"
+                    Click="Exit_Click"/>
         </StackPanel>
     </Grid>
 </Page>

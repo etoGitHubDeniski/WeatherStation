@@ -10,15 +10,22 @@
       Title="LookDataPage">
 
     <Grid>
-        <TabControl>
-            <TabItem Header="AllDevices">
-                <TabItem.Content>
-                    <DataGrid Name="DgAllDevicesData" CanUserAddRows="False"
+        <!-- Разметка -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="60"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Основной фрейм -->
+        <Frame Name="FrmData" Margin="0,-1,0,0"
+               NavigationUIVisibility="Hidden" Focusable="False"/>
+
+        <!--<TabControl Margin="10,10,10,70">
+            <TabItem Header="Сведения о приборе">
+                <DataGrid Name="DgAllDevicesData" CanUserAddRows="False"
                               AutoGenerateColumns="True">
-                        <DataGrid.Columns>
-                            <!--<DataGridTextColumn Binding="{Binding Id}" Width="50"
-                                                Header="Id" IsReadOnly="True"/>-->
-                            <!--<DataGridTextColumn Binding="{Binding Name}" 
+                    <DataGrid.Columns>
+                        --><!--<DataGridTextColumn Binding="{Binding Name}" 
                                                 Width="*" MinWidth="200"
                                                 Header="Название прибора" IsReadOnly="True"/>
                             <DataGridTextColumn Binding="{Binding Designation}" 
@@ -38,11 +45,22 @@
                                                 Header="IdState" IsReadOnly="True"/>
                             <DataGridTextColumn Binding="{Binding IdDepartment}" 
                                                 Width="*" MinWidth="200"
-                                                Header="IdDepartment" IsReadOnly="True"/>-->
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </TabItem.Content>
+                                                Header="IdDepartment" IsReadOnly="True"/>--><!--
+                    </DataGrid.Columns>
+                </DataGrid>
             </TabItem>
-        </TabControl>
+            <TabItem Header="Сведения о закреплении приборов за подразделениями">
+                <DataGrid>
+                    
+                </DataGrid>
+            </TabItem>
+        </TabControl>-->
+        
+        <!-- back button -->
+        <Button Name="BtnBackToMenu" Grid.Row="1" Content="Назад"
+                VerticalAlignment="Bottom" Margin="20,0,20,10"
+                Style="{StaticResource ButtonLoginStyle}"
+                Template="{DynamicResource ButtonLoginControlTemplate}"
+                Click="BtnBackToMenu_Click"/>
     </Grid>
 </Page>

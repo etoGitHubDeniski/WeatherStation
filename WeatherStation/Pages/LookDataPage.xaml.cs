@@ -25,26 +25,15 @@ namespace WeatherStation.Pages
         {
             InitializeComponent();
 
-            //var workProfile = ControlClass.WeatherStationDataBase.WorkProfile.FirstOrDefault(x => x.Id == AccountHelpClass.Id);
-            //ControlClass.WeatherStationDataBase.Device.ToList();
+            ControlClass.FrameData = FrmData;
+            ControlClass.FrameData.Navigate(new DataMenuPage());
 
-            DgAllDevicesData.ItemsSource = ControlClass.WeatherStationDataBase.Device
-                .Join(ControlClass.WeatherStationDataBase.Status,
-                    device => device.IdStatus,
-                    status => status.Id,
-                    (device, status) => new { Device = device, Status = status })
-                //.Join(ControlClass.WeatherStationDataBase.State,
-                //    device => device.IdState,
-                //    state => state.Id,
-                //    (device, state) => new { Device = device, State = state })
-                .Select(x => new {
-                    Name = x.Device.Name,
-                    Designation = x.Device.Designation,
-                    InventoryName = x.Device.InventoryNumber,
-                    Price = x.Device.Price,
-                    IdStatus = x.Status.Name,
-                    IdState = x.State.Name})
-                .ToList();
+            //DgAllDevicesData.ItemsSource = ControlClass.WeatherStationDataBase.WeatherStationView.ToList();
+        }
+
+        private void BtnBackToMenu_Click(object sender, RoutedEventArgs e)
+        {
+            ControlClass.FrameMain.GoBack();
         }
     }
 }

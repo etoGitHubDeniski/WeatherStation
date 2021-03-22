@@ -8,11 +8,12 @@
         
         WindowStartupLocation="CenterScreen"
         WindowState="Normal" WindowStyle="None"
-        Background="Red" AllowsTransparency="True"
+        Background="#353535" AllowsTransparency="True"
         SizeChanged="Window_SizeChanged"
         
         Icon="Resourses/Image/Icon/Icon.png"
-        Title="Weather Station" Height="810" Width="1440">
+        Title="Weather Station" 
+        Height="810" Width="1440" MinHeight="700" MinWidth="550">
 
     <!-- Удаление верхней белой Resize полоски с оставлением функционала Resize -->
     <WindowChrome.WindowChrome>

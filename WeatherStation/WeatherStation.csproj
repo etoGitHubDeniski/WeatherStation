@@ -73,32 +73,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppData\ControlClass.cs" />
-    <Compile Include="AppData\Departament.cs">
-      <DependentUpon>WeatherStationModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\Device.cs">
-      <DependentUpon>WeatherStationModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="AppData\Role.cs">
       <DependentUpon>WeatherStationAuthorizationModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\State.cs">
-      <DependentUpon>WeatherStationModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\Status.cs">
-      <DependentUpon>WeatherStationModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\Suitability.cs">
-      <DependentUpon>WeatherStationModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\sysdiagrams.cs">
-      <DependentUpon>WeatherStationModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="AppData\User.cs">
       <DependentUpon>WeatherStationAuthorizationModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\Verification.cs">
-      <DependentUpon>WeatherStationModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\WeatherStationAuthorizationModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -115,29 +94,19 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WeatherStationAuthorizationModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="AppData\WeatherStationModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WeatherStationModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\WeatherStationModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WeatherStationModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\WeatherStationModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WeatherStationModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="AppData\WorkProfile.cs">
-      <DependentUpon>WeatherStationModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\AuthorizationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\DataMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InfoDevicePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -157,6 +126,12 @@
   <ItemGroup>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DataMenuPage.xaml.cs">
+      <DependentUpon>DataMenuPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InfoDevicePage.xaml.cs">
+      <DependentUpon>InfoDevicePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
@@ -191,13 +166,6 @@
     <None Include="AppData\WeatherStationAuthorizationModel.edmx.diagram">
       <DependentUpon>WeatherStationAuthorizationModel.edmx</DependentUpon>
     </None>
-    <EntityDeploy Include="AppData\WeatherStationModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WeatherStationModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="AppData\WeatherStationModel.edmx.diagram">
-      <DependentUpon>WeatherStationModel.edmx</DependentUpon>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -218,16 +186,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WeatherStationAuthorizationModel.edmx</DependentUpon>
       <LastGenOutput>WeatherStationAuthorizationModel.cs</LastGenOutput>
-    </Content>
-    <Content Include="AppData\WeatherStationModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WeatherStationModel.edmx</DependentUpon>
-      <LastGenOutput>WeatherStationModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="AppData\WeatherStationModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WeatherStationModel.edmx</DependentUpon>
-      <LastGenOutput>WeatherStationModel.cs</LastGenOutput>
     </Content>
     <Resource Include="Resourses\Image\Icon\Icon.png" />
   </ItemGroup>

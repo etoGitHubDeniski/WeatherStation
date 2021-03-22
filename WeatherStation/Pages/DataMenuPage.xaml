@@ -1,0 +1,63 @@
+﻿<Page x:Class="WeatherStation.Pages.DataMenuPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WeatherStation.Pages"
+      mc:Ignorable="d" 
+      Background="#404040"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DataMenuPage">
+    
+    <Grid>
+        <WrapPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Width="500" Margin="10">
+                <Button Name="BtnInfoDevice" Content="Сведения о приборах"
+                        Style="{StaticResource ButtonLoginStyle}"
+                        Template="{DynamicResource ButtonLoginControlTemplate}"
+                        Click="BtnInfoDevice_Click"/>
+                <Button Name="BtnInfoDepartment" Content="Сведения о подразделениях"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource ButtonLoginStyle}"
+                        Template="{DynamicResource ButtonLoginControlTemplate}"
+                        Click="BtnInfoDepartment_Click"/>
+                <Button Name="BtnInfoRepair" Content="Сведения о ремонте"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource ButtonLoginStyle}"
+                        Template="{DynamicResource ButtonLoginControlTemplate}"
+                        Click="BtnInfoRepair_Click"/>
+                <Button Name="BtnDeviceQuantity" Content="Какие приборы имеются"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource ButtonLoginStyle}"
+                        Template="{DynamicResource ButtonLoginControlTemplate}"
+                        Click="BtnDeviceQuantity_Click"/>
+                <Button Name="BtnDeviceOnVerif" Content="Приборы на проверке"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource ButtonLoginStyle}"
+                        Template="{DynamicResource ButtonLoginControlTemplate}"
+                        Click="BtnDeviceOnVerif_Click"/>
+            </StackPanel>
+            <StackPanel Width="500" Margin="10">
+                <Button Name="BtnDeviceDecom" Content="Списанные приборы"
+                        Style="{StaticResource ButtonLoginStyle}"
+                        Template="{DynamicResource ButtonLoginControlTemplate}"
+                        Click="BtnDeviceDecom_Click"/>
+                <Button Name="BtnDeviceNeedVerif" Content="Необходимо пройти проверку"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource ButtonLoginStyle}"
+                        Template="{DynamicResource ButtonLoginControlTemplate}"
+                        Click="BtnDeviceNeedVerif_Click"/>
+                <Button Name="BtnDepartmentDeviceOnVerif" Content="Организации на проверке"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource ButtonLoginStyle}"
+                        Template="{DynamicResource ButtonLoginControlTemplate}"
+                        Click="BtnDepartmentDeviceOnVerif_Click"/>
+                <Button Name="BtnDeviceHaveNextVerif" Content="Приборы с наступившем сроком проверки"
+                        Margin="0,20,0,0"
+                        Style="{StaticResource ButtonLoginStyle}"
+                        Template="{DynamicResource ButtonLoginControlTemplate}"
+                        Click="BtnDeviceHaveNextVerif_Click"/>
+            </StackPanel>
+        </WrapPanel>
+    </Grid>
+</Page>

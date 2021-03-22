@@ -45,5 +45,10 @@ namespace WeatherStation.Pages
         {
             ControlClass.FrameMain.Navigate(new LoginPage());
         }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            App.Current.Shutdown();
+        }
     }
 }

@@ -48,6 +48,21 @@ namespace WeatherStation.Pages
                 User user = ControlClass.WeatherStationAuthorizationDataBase.User.FirstOrDefault(x => x.Login == TxbLoginLogin.Text && x.Password == PsbPasswordLogin.Password);
                 if (user != null)
                 {
+                    if (ChbRemember.IsChecked == true)
+                    {
+                        // Сохранение введенных данных
+                        Properties.Settings.Default.LoginRemember = TxbLoginLogin.Text;
+                        Properties.Settings.Default.PasswordRemember = PsbPasswordLogin.Password;
+                        Properties.Settings.Default.Save();
+                    }
+                    else
+                    {
+                        // Очистка сохраненных данных
+                        Properties.Settings.Default.LoginRemember = string.Empty;
+                        Properties.Settings.Default.PasswordRemember = string.Empty;
+                        Properties.Settings.Default.Save();
+                    }
+
                     ControlClass.FrameMain.Navigate(new MainMenuPage());
                 }
                 else
@@ -65,22 +80,6 @@ namespace WeatherStation.Pages
         private void BtnSignUp_Click(object sender, RoutedEventArgs e)
         {
             ControlClass.FrameMain.Navigate(new AuthorizationPage());
-        }
-
-        // Сохранение введенных данных
-        private void ChbRemember_Checked(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.LoginRemember = TxbLoginLogin.Text;
-            Properties.Settings.Default.PasswordRemember = PsbPasswordLogin.Password;
-            Properties.Settings.Default.Save();
-        }
-
-        // Очистка сохраненных данных
-        private void ChbRemember_Unchecked(object sender, RoutedEventArgs e)
-        {
-            Properties.Settings.Default.LoginRemember = string.Empty;
-            Properties.Settings.Default.PasswordRemember = string.Empty;
-            Properties.Settings.Default.Save();
         }
     }
 }

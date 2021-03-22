@@ -10,13 +10,9 @@ namespace WeatherStation.AppData
     class ControlClass
     {
         public static Frame FrameMain;
+        public static Frame FrameData;
 
         public static WeatherStationAuthorizationEntities WeatherStationAuthorizationDataBase;
-        public static WeatherStationEntities WeatherStationDataBase;
-    }
-
-    class AccountHelpClass
-    {
-        public static int Id { get; set; }
+        //public static WeatherStationEntities WeatherStationDataBase;
     }
 }
