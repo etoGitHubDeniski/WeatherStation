@@ -33,7 +33,7 @@ namespace WeatherStation.Pages
 
         private void BtnInfoDepartment_Click(object sender, RoutedEventArgs e)
         {
-
+            ControlClass.FrameMain.Navigate(new InfoDepartmentPage());
         }
 
         private void BtnInfoRepair_Click(object sender, RoutedEventArgs e)

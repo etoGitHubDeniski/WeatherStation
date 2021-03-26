@@ -26,18 +26,31 @@ namespace WeatherStation.Pages
             InitializeComponent();
 
             // Вставка логина и пароля при запуске приложения
-            if (Properties.Settings.Default.LoginRemember != string.Empty)
+            if (Properties.Settings.Default.LogicRegRem == true)
             {
-                TxbLoginLogin.Text = Properties.Settings.Default.LoginRemember;
-                PsbPasswordLogin.Password = Properties.Settings.Default.PasswordRemember;
-                ChbRemember.IsChecked = true;
+                TxbLoginLogin.Text = Properties.Settings.Default.LoginRegRem;
+                PsbPasswordLogin.Password = Properties.Settings.Default.PasRegRem;
+                Properties.Settings.Default.LoginRegRem = string.Empty;
+                Properties.Settings.Default.PasRegRem = string.Empty;
+                Properties.Settings.Default.LogicRegRem = false;
+                Properties.Settings.Default.Save();
             }
             else
             {
-                TxbLoginLogin.Text = Properties.Settings.Default.LoginRemember;
-                PsbPasswordLogin.Password = Properties.Settings.Default.PasswordRemember;
-                ChbRemember.IsChecked = false;
+                if (Properties.Settings.Default.LoginRemember != string.Empty)
+                {
+                    TxbLoginLogin.Text = Properties.Settings.Default.LoginRemember;
+                    PsbPasswordLogin.Password = Properties.Settings.Default.PasswordRemember;
+                    ChbRemember.IsChecked = true;
+                }
+                else
+                {
+                    TxbLoginLogin.Text = Properties.Settings.Default.LoginRemember;
+                    PsbPasswordLogin.Password = Properties.Settings.Default.PasswordRemember;
+                    ChbRemember.IsChecked = false;
+                }
             }
+            
         }
 
         // Попытка найти пользователя в БД
@@ -45,7 +58,8 @@ namespace WeatherStation.Pages
         {
             try
             {
-                User user = ControlClass.WeatherStationAuthorizationDataBase.User.FirstOrDefault(x => x.Login == TxbLoginLogin.Text && x.Password == PsbPasswordLogin.Password);
+                User user = ControlClass.WeatherStationAuthorizationDataBase.User
+                    .FirstOrDefault(x => x.Login == TxbLoginLogin.Text && x.Password == PsbPasswordLogin.Password);
                 if (user != null)
                 {
                     if (ChbRemember.IsChecked == true)

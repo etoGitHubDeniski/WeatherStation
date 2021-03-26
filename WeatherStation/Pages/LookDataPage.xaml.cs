@@ -27,8 +27,6 @@ namespace WeatherStation.Pages
 
             ControlClass.FrameData = FrmData;
             ControlClass.FrameData.Navigate(new DataMenuPage());
-
-            //DgAllDevicesData.ItemsSource = ControlClass.WeatherStationDataBase.WeatherStationView.ToList();
         }
 
         private void BtnBackToMenu_Click(object sender, RoutedEventArgs e)

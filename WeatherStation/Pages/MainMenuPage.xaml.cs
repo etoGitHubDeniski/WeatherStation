@@ -33,7 +33,7 @@ namespace WeatherStation.Pages
 
         private void BtnRemoveDevice_Click(object sender, RoutedEventArgs e)
         {
-
+            ControlClass.FrameMain.Navigate(new InfoDevicePage());
         }
 
         private void BtnLookData_Click(object sender, RoutedEventArgs e)

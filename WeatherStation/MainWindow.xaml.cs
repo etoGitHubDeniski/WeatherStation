@@ -27,7 +27,7 @@ namespace WeatherStation
             InitializeComponent();
 
             ControlClass.WeatherStationAuthorizationDataBase = new WeatherStationAuthorizationEntities();
-            //ControlClass.WeatherStationDataBase = new WeatherStationEntities();
+            ControlClass.WeatherStationDataBase = new WeatherStationEntities();
 
             ControlClass.FrameMain = FrmMain;
             ControlClass.FrameMain.Navigate(new LoginPage());

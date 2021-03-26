@@ -14,6 +14,21 @@
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -64,6 +79,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="PagesDevice\DeviceInfoPage.xaml.cs">
+      <DependentUpon>DeviceInfoPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\InfoDepartmentPage.xaml.cs">
+      <DependentUpon>InfoDepartmentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MoreInfoDeviceWindow.xaml.cs">
+      <DependentUpon>MoreInfoDeviceWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -73,11 +97,35 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="AppData\ControlClass.cs" />
+    <Compile Include="AppData\Departament.cs">
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Device.cs">
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\Role.cs">
       <DependentUpon>WeatherStationAuthorizationModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="AppData\State.cs">
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Status.cs">
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Suitability.cs">
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\sysdiagrams.cs">
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="AppData\User.cs">
       <DependentUpon>WeatherStationAuthorizationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\Verification.cs">
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\WeatherStationAllView.cs">
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\WeatherStationAuthorizationModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -94,15 +142,41 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WeatherStationAuthorizationModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="AppData\WeatherStationModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeatherStationModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\WeatherStationModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\WeatherStationModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WeatherStationModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="AppData\WorkProfile.cs">
+      <DependentUpon>WeatherStationModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PagesDevice\DeviceInfoPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\DataMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\InfoDepartmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -119,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MainMenuPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MoreInfoDeviceWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,6 +244,13 @@
     <None Include="AppData\WeatherStationAuthorizationModel.edmx.diagram">
       <DependentUpon>WeatherStationAuthorizationModel.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="AppData\WeatherStationModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WeatherStationModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AppData\WeatherStationModel.edmx.diagram">
+      <DependentUpon>WeatherStationModel.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -175,7 +260,18 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="AppData\WeatherStationAuthorizationModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -186,6 +282,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>WeatherStationAuthorizationModel.edmx</DependentUpon>
       <LastGenOutput>WeatherStationAuthorizationModel.cs</LastGenOutput>
+    </Content>
+    <Content Include="AppData\WeatherStationModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeatherStationModel.edmx</DependentUpon>
+      <LastGenOutput>WeatherStationModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AppData\WeatherStationModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WeatherStationModel.edmx</DependentUpon>
+      <LastGenOutput>WeatherStationModel.cs</LastGenOutput>
     </Content>
     <Resource Include="Resourses\Image\Icon\Icon.png" />
   </ItemGroup>
