@@ -33,5 +33,6 @@ namespace WeatherStation.AppData
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Verification> Verification { get; set; }
         public virtual DbSet<WorkProfile> WorkProfile { get; set; }
+        public virtual DbSet<WeatherStationAllView> WeatherStationAllView { get; set; }
     }
 }

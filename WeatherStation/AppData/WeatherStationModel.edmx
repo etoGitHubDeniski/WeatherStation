@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище WeatherStationModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище WeatherStationModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Departament">
           <Key>
             <PropertyRef Name="Id" />
@@ -74,6 +74,36 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "WeatherStation.dbo.WeatherStationAllView" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+        <EntityType Name="WeatherStationAllView">
+          <Key>
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Designation" />
+            <PropertyRef Name="InventoryNumber" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="State" />
+            <PropertyRef Name="Department" />
+            <PropertyRef Name="WorkProfile" />
+            <PropertyRef Name="NextDate" />
+            <PropertyRef Name="Suitability" />
+            <PropertyRef Name="Cost" />
+          </Key>
+          <Property Name="Date" Type="bigint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Designation" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="InventoryNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Department" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WorkProfile" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NextDate" Type="bigint" Nullable="false" />
+          <Property Name="Suitability" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cost" Type="decimal" Precision="18" Scale="2" Nullable="false" />
         </EntityType>
         <Association Name="FK_Departament_WorkProfile">
           <End Role="WorkProfile" Type="Self.WorkProfile" Multiplicity="1" />
@@ -156,6 +186,22 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Verification" EntityType="Self.Verification" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="WorkProfile" EntityType="Self.WorkProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WeatherStationAllView" EntityType="Self.WeatherStationAllView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [WeatherStationAllView].[Date] AS [Date], 
+    [WeatherStationAllView].[Name] AS [Name], 
+    [WeatherStationAllView].[Designation] AS [Designation], 
+    [WeatherStationAllView].[InventoryNumber] AS [InventoryNumber], 
+    [WeatherStationAllView].[Price] AS [Price], 
+    [WeatherStationAllView].[Status] AS [Status], 
+    [WeatherStationAllView].[State] AS [State], 
+    [WeatherStationAllView].[Department] AS [Department], 
+    [WeatherStationAllView].[WorkProfile] AS [WorkProfile], 
+    [WeatherStationAllView].[NextDate] AS [NextDate], 
+    [WeatherStationAllView].[Suitability] AS [Suitability], 
+    [WeatherStationAllView].[Cost] AS [Cost]
+    FROM [dbo].[WeatherStationAllView] AS [WeatherStationAllView]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Departament_WorkProfile" Association="Self.FK_Departament_WorkProfile">
             <End Role="WorkProfile" EntitySet="WorkProfile" />
             <End Role="Departament" EntitySet="Departament" />
@@ -181,8 +227,7 @@
             <End Role="Verification" EntitySet="Verification" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WeatherStationModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -268,6 +313,34 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Departament" Relationship="Self.FK_Departament_WorkProfile" FromRole="WorkProfile" ToRole="Departament" />
         </EntityType>
+        <EntityType Name="WeatherStationAllView">
+          <Key>
+            <PropertyRef Name="Date" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Designation" />
+            <PropertyRef Name="InventoryNumber" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Status" />
+            <PropertyRef Name="State" />
+            <PropertyRef Name="Department" />
+            <PropertyRef Name="WorkProfile" />
+            <PropertyRef Name="NextDate" />
+            <PropertyRef Name="Suitability" />
+            <PropertyRef Name="Cost" />
+          </Key>
+          <Property Name="Date" Type="Int64" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="InventoryNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="State" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WorkProfile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NextDate" Type="Int64" Nullable="false" />
+          <Property Name="Suitability" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Cost" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+        </EntityType>
         <Association Name="FK_Departament_WorkProfile">
           <End Role="WorkProfile" Type="Self.WorkProfile" Multiplicity="1" />
           <End Role="Departament" Type="Self.Departament" Multiplicity="*" />
@@ -349,6 +422,7 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Verification" EntityType="Self.Verification" />
           <EntitySet Name="WorkProfile" EntityType="Self.WorkProfile" />
+          <EntitySet Name="WeatherStationAllView" EntityType="Self.WeatherStationAllView" />
           <AssociationSet Name="FK_Departament_WorkProfile" Association="Self.FK_Departament_WorkProfile">
             <End Role="WorkProfile" EntitySet="WorkProfile" />
             <End Role="Departament" EntitySet="Departament" />
@@ -455,6 +529,24 @@
               <MappingFragment StoreEntitySet="WorkProfile">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WeatherStationAllView">
+            <EntityTypeMapping TypeName="WeatherStationModel.WeatherStationAllView">
+              <MappingFragment StoreEntitySet="WeatherStationAllView">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Designation" ColumnName="Designation" />
+                <ScalarProperty Name="InventoryNumber" ColumnName="InventoryNumber" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="WorkProfile" ColumnName="WorkProfile" />
+                <ScalarProperty Name="NextDate" ColumnName="NextDate" />
+                <ScalarProperty Name="Suitability" ColumnName="Suitability" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

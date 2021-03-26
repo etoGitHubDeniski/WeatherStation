@@ -49,6 +49,11 @@ namespace WeatherStation.Pages
                             ControlClass.WeatherStationAuthorizationDataBase.User.Add(user);
                             ControlClass.WeatherStationAuthorizationDataBase.SaveChanges();
                             MessageBox.Show("Данные сохранены");
+                            Properties.Settings.Default.LoginRegRem = TxbUserLoginRegister.Text;
+                            Properties.Settings.Default.PasRegRem = PsbPasswordConfirm.Password;
+                            Properties.Settings.Default.LogicRegRem = true;
+                            Properties.Settings.Default.Save();
+                            ControlClass.FrameMain.Navigate(new LoginPage());
                         }
                         else
                         {

@@ -26,7 +26,6 @@ namespace WeatherStation.AppData
         }
     
         public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<User> User { get; set; }
     }
 }

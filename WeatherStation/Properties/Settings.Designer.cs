@@ -46,5 +46,41 @@ namespace WeatherStation.Properties {
                 this["PasswordRemember"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LoginRegRem {
+            get {
+                return ((string)(this["LoginRegRem"]));
+            }
+            set {
+                this["LoginRegRem"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PasRegRem {
+            get {
+                return ((string)(this["PasRegRem"]));
+            }
+            set {
+                this["PasRegRem"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool LogicRegRem {
+            get {
+                return ((bool)(this["LogicRegRem"]));
+            }
+            set {
+                this["LogicRegRem"] = value;
+            }
+        }
     }
 }

@@ -64,7 +64,7 @@ namespace WeatherStation
             {
                 BtnWinState.Content = Char.ConvertFromUtf32(0xE923);
                 BtnWinState.ToolTip = "Восстановить";
-                GridMain.Margin = new Thickness(0, 7, 7, 0);
+                GridMain.Margin = new Thickness(7);
             }
             else
             {

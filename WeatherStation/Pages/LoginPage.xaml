@@ -12,7 +12,7 @@
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
 
-            <!-- username -->
+            <!-- login -->
             <StackPanel>
                 <TextBlock Style="{StaticResource TextBlockLoginHeaderStyle}"
                            Text="login"/>
@@ -39,16 +39,16 @@
             </StackPanel>
 
             <!-- Remember me -->
-            <StackPanel Margin="0,10,0,0">
+            <StackPanel Margin="-5,15,0,0" Orientation="Horizontal">
                 <CheckBox Name="ChbRemember" Content="Remember me" 
-                          Margin="10,0,0,0"
-                          Checked="ChbRemember_Checked"
-                          Unchecked="ChbRemember_Unchecked"
+                          Margin="10,0,0,0" Width="17"
                           Style="{StaticResource CheckBoxRememberStyle}"/>
+                <TextBlock Text="Remember me" Margin="5,0,0,0"
+                           Foreground="#BFBFBF"/>
             </StackPanel>
 
             <!-- login button -->
-            <Button Name="BtnLogin" Margin="0,40,0,0"
+            <Button Name="BtnLogin" Margin="0,40,0,0" IsDefault="True"
                     Style="{StaticResource ButtonLoginStyle}"
                     Template="{DynamicResource ButtonLoginControlTemplate}"
                     Click="BtnLogin_Click"/>
