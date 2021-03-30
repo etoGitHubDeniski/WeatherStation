@@ -60,27 +60,108 @@ namespace WeatherStation.PagesDevice
                     s.Device.Price,
                     Status = s.Status.Name,
                     State = s.State.Name,
+                    IdDepartament = s.Departament.Id,
                     Departament = s.Departament.Name,
                     WorkProfile = s.WorkProfile.Name,
                     Verification = s.Verification.NextDate
-                }).Where(x => x.Name.ToUpper().Contains(ControlClass.TextBoxDeviceSearch.Text.ToUpper())).ToList();
+                }).ToList();
 
-            var selectedIndex = ControlClass.DataGridDeviceInfo.SelectedIndex;
+            switch (ControlClass.LogicDepartmentDeviceInfo)
+            {
+                case 1:
+                    if (ControlClass.TextBoxDeviceSearch.Text != string.Empty)
+                    {
+                        deviceDataList = deviceDataList.Where(x => x.Name.ToUpper().Contains(ControlClass.TextBoxDeviceSearch.Text.ToUpper())).ToList();
+                    }
+                    else
+                    {
+                        deviceDataList = deviceDataList.Where(x => x.Name.Contains(ControlClass.TextBoxDeviceSearch.Text)).ToList();
+                    }
 
-            TxbDeviceName.Text = deviceDataList[selectedIndex].Name;
-            TxbDeviceDesignation.Text = deviceDataList[selectedIndex].Designation;
-            TxbDeviceNumber.Text = deviceDataList[selectedIndex].InventoryNumber;
-            TxbDevicePrice.Text = deviceDataList[selectedIndex].Price.ToString();
-            TxbDeviceStatus.Text = deviceDataList[selectedIndex].Status;
-            TxbDeviceState.Text = deviceDataList[selectedIndex].State;
-            TxbDeviceDepartment.Text = deviceDataList[selectedIndex].Departament;
-            TxbDeviceWorkProfile.Text = deviceDataList[selectedIndex].WorkProfile;
+                    var selectedIndex = ControlClass.DataGridDeviceInfo.SelectedIndex;
 
-            //DateTime конвертер
-            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-            dtDateTime = dtDateTime.AddSeconds(deviceDataList[selectedIndex].Verification).ToLocalTime();
+                    TxbDeviceName.Text = deviceDataList[selectedIndex].Name;
+                    TxbDeviceDesignation.Text = deviceDataList[selectedIndex].Designation;
+                    TxbDeviceNumber.Text = deviceDataList[selectedIndex].InventoryNumber;
+                    TxbDevicePrice.Text = deviceDataList[selectedIndex].Price.ToString();
+                    TxbDeviceStatus.Text = deviceDataList[selectedIndex].Status;
+                    TxbDeviceState.Text = deviceDataList[selectedIndex].State;
+                    TxbDeviceDepartment.Text = deviceDataList[selectedIndex].Departament;
+                    TxbDeviceWorkProfile.Text = deviceDataList[selectedIndex].WorkProfile;
 
-            TxbDeviceNextDateVerif.Text = dtDateTime.ToString();
+                    //DateTime конвертер
+                    DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                    dtDateTime = dtDateTime.AddSeconds(deviceDataList[selectedIndex].Verification).ToLocalTime();
+
+                    TxbDeviceNextDateVerif.Text = dtDateTime.ToString();
+                    break;
+
+                case 2:
+                    var departmentDataList = ControlClass.WeatherStationDataBase.Departament
+                        .Join(ControlClass.WeatherStationDataBase.WorkProfile,
+                            d => d.IdWorkProfile,
+                            wp => wp.Id,
+                            (d, wp) => new { Departament = d, WorkProfile = wp })
+                        .Select(s => new
+                        {
+                            s.Departament.Id,
+                            s.Departament.Name,
+                            WorkProfile = s.WorkProfile.Name
+                        }).ToList();
+
+                    if (ControlClass.TextBoxDepartmentProfileSearch.Text != string.Empty)
+                    {
+                        if (ControlClass.TextBoxDepartmentSearch.Text != string.Empty)
+                        {
+                            // Вывод информации с условием
+                            departmentDataList = departmentDataList
+                                .Where(x => x.Name.ToUpper().Contains(ControlClass.TextBoxDepartmentSearch.Text.ToUpper()))
+                                .Where(x => x.WorkProfile.ToUpper().Contains(ControlClass.TextBoxDepartmentProfileSearch.Text.ToUpper()))
+                                .ToList();
+                        }
+                        else
+                        {
+                            // Вывод информации с условием
+                            departmentDataList = departmentDataList
+                                .Where(x => x.WorkProfile.ToUpper().Contains(ControlClass.TextBoxDepartmentProfileSearch.Text.ToUpper()))
+                                .ToList();
+                        }
+                    }
+                    else
+                    {
+                        if (ControlClass.TextBoxDepartmentSearch.Text != string.Empty)
+                        {
+                            // Вывод информации с условием
+                            departmentDataList = departmentDataList
+                                .Where(x => x.Name.ToUpper().Contains(ControlClass.TextBoxDepartmentSearch.Text.ToUpper()))
+                                .ToList();
+                        }
+                    }
+
+                    var selectedIndex2 = ControlClass.DataGridDepartmentDeviceInfo.SelectedIndex;
+                    var selectedIndex3 = ControlClass.DataGridDepartmentInfo.SelectedIndex;
+
+                    var department_deviceDataList = deviceDataList
+                        .Where(x => x.IdDepartament == departmentDataList[selectedIndex3].Id)
+                        .Select(x => new { x.Name, x.Designation, x.InventoryNumber, x.Price, x.Status, x.State, x.Departament, x.WorkProfile, x.Verification })
+                        .ToList();
+
+                    TxbDeviceName.Text = department_deviceDataList[selectedIndex2].Name;
+                    TxbDeviceDesignation.Text = department_deviceDataList[selectedIndex2].Designation;
+                    TxbDeviceNumber.Text = department_deviceDataList[selectedIndex2].InventoryNumber;
+                    TxbDevicePrice.Text = department_deviceDataList[selectedIndex2].Price.ToString();
+                    TxbDeviceStatus.Text = department_deviceDataList[selectedIndex2].Status;
+                    TxbDeviceState.Text = department_deviceDataList[selectedIndex2].State;
+                    TxbDeviceDepartment.Text = department_deviceDataList[selectedIndex2].Departament;
+                    TxbDeviceWorkProfile.Text = department_deviceDataList[selectedIndex2].WorkProfile;
+
+                    //DateTime конвертер
+                    DateTime dtDateTime2 = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+                    dtDateTime2 = dtDateTime2.AddSeconds(department_deviceDataList[selectedIndex2].Verification).ToLocalTime();
+
+                    TxbDeviceNextDateVerif.Text = dtDateTime2.ToString();
+                    break;
+            }
         }
 
         private void BtnCloseDevice_Click(object sender, RoutedEventArgs e)

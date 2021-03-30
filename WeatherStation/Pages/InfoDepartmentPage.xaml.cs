@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WeatherStation.AppData;
+using WeatherStation.Windows;
 
 namespace WeatherStation.Pages
 {
@@ -24,6 +25,10 @@ namespace WeatherStation.Pages
         public InfoDepartmentPage()
         {
             InitializeComponent();
+
+            ControlClass.DataGridDepartmentInfo = DgInfoDepartment;
+            ControlClass.TextBoxDepartmentSearch = TxbSearchInfoDepartment;
+            ControlClass.TextBoxDepartmentProfileSearch = TxbSearchInfoDepartmentProfile;
 
             // Запрос всей информации
             var departmentDataList = ControlClass.WeatherStationDataBase.Departament
@@ -39,7 +44,8 @@ namespace WeatherStation.Pages
                 }).ToList();
 
             // Вывод информации при открытии страницы
-            DgInfoDepartment.ItemsSource = departmentDataList;
+            DgInfoDepartment.ItemsSource = departmentDataList
+                .Select(x => new { x.Name, x.WorkProfile });
             TxbAllDepartmentCount.Text = departmentDataList.Count.ToString();
             TxbNowDepartmentCount.Text = DgInfoDepartment.Items.Count.ToString();
         }
@@ -65,21 +71,43 @@ namespace WeatherStation.Pages
                     WorkProfile = s.WorkProfile.Name
                 }).ToList();
 
-            if (TxbSearchInfoDepartment.Text != string.Empty)
+            if (TxbSearchInfoDepartmentProfile.Text != string.Empty)
             {
-                // Вывод информации с условием
-                DgInfoDepartment.ItemsSource = departmentDataList
-                    .Where(x => x.Name.ToUpper().Contains(TxbSearchInfoDepartment.Text.ToUpper()))
-                    .Select(x => new { x.Name, x.WorkProfile })
-                    .ToList();
+                if (TxbSearchInfoDepartment.Text != string.Empty)
+                {
+                    // Вывод информации с условием
+                    DgInfoDepartment.ItemsSource = departmentDataList
+                        .Where(x => x.Name.ToUpper().Contains(TxbSearchInfoDepartment.Text.ToUpper()))
+                        .Where(x => x.WorkProfile.ToUpper().Contains(TxbSearchInfoDepartmentProfile.Text.ToUpper()))
+                        .Select(x => new { x.Name, x.WorkProfile })
+                        .ToList();
+                }
+                else
+                {
+                    // Вывод информации с условием
+                    DgInfoDepartment.ItemsSource = departmentDataList
+                        .Where(x => x.WorkProfile.ToUpper().Contains(TxbSearchInfoDepartmentProfile.Text.ToUpper()))
+                        .Select(x => new { x.Name, x.WorkProfile })
+                        .ToList();
+                }
             }
             else
             {
-                // Вывод всей информации при пустом условии
-                DgInfoDepartment.ItemsSource = departmentDataList
-                    .Select(x => new { x.Name, x.WorkProfile });
+                if (TxbSearchInfoDepartment.Text != string.Empty)
+                {
+                    // Вывод информации с условием
+                    DgInfoDepartment.ItemsSource = departmentDataList
+                        .Where(x => x.Name.ToUpper().Contains(TxbSearchInfoDepartment.Text.ToUpper()))
+                        .Select(x => new { x.Name, x.WorkProfile })
+                        .ToList();
+                }
+                else
+                {
+                    // Вывод всей информации при пустом условии
+                    DgInfoDepartment.ItemsSource = departmentDataList
+                        .Select(x => new { x.Name, x.WorkProfile });
+                }
             }
-
             // Обновление информации
             TxbAllDepartmentCount.Text = departmentDataList.Count.ToString();
             TxbNowDepartmentCount.Text = DgInfoDepartment.Items.Count.ToString();
@@ -87,7 +115,9 @@ namespace WeatherStation.Pages
 
         private void BtnLookInfoDepartment_Click(object sender, RoutedEventArgs e)
         {
-
+            // Открытие окна с дополнительной информацией
+            MoreInfoDepartmentWindow moreInfoDepartmentWindow = new MoreInfoDepartmentWindow();
+            moreInfoDepartmentWindow.Show();
         }
     }
 }
