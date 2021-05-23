@@ -8,6 +8,7 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Normal" WindowStyle="None"
         Background="#353535" AllowsTransparency="True"
+        SizeChanged="Window_SizeChanged"
         
         Icon="/WeatherStation;component/Resourses/Image/Icon/Icon.png"
         Title="Device Info" 
@@ -19,7 +20,7 @@
         <WindowChrome CaptionHeight="28"/>
     </WindowChrome.WindowChrome>
 
-    <Grid>
+    <Grid Name="GridMain">
         <!-- Разметка -->
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -38,6 +39,10 @@
                     Orientation="Horizontal" Margin="0,-1,0,0">
             <Button Name="BtnRollUp" Content="&#xE921;" ToolTip="Свернуть"
                     Click="BtnRollUp_Click" 
+                    Style="{StaticResource ButtonTopBarStyle}"
+                    Template="{DynamicResource ButtonTopBarControlTemplate}"/>
+            <Button Name="BtnWinState" Content="&#xE922;" ToolTip="Развернуть"
+                    Click="BtnWinState_Click" 
                     Style="{StaticResource ButtonTopBarStyle}"
                     Template="{DynamicResource ButtonTopBarControlTemplate}"/>
             <Button Name="BtnClose" Content="&#xE8BB;" ToolTip="Закрыть"

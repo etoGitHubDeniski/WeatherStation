@@ -46,5 +46,36 @@ namespace WeatherStation.Windows
         {
             this.Topmost = false;
         }
+
+        private void BtnWinState_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                BtnWinState.Content = Char.ConvertFromUtf32(0xE922);
+                this.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                this.WindowState = WindowState.Normal;
+            }
+            else if (this.WindowState == WindowState.Normal)
+            {
+                BtnWinState.Content = Char.ConvertFromUtf32(0xE923);
+                this.WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if (this.WindowState == WindowState.Maximized)
+            {
+                BtnWinState.Content = Char.ConvertFromUtf32(0xE923);
+                BtnWinState.ToolTip = "Восстановить";
+                GridMain.Margin = new Thickness(7);
+            }
+            else
+            {
+                BtnWinState.Content = Char.ConvertFromUtf32(0xE922);
+                BtnWinState.ToolTip = "Развернуть";
+                GridMain.Margin = new Thickness(0);
+            }
+        }
     }
 }
