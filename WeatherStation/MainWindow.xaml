@@ -29,8 +29,7 @@
 
         <!-- Основной фрейм -->
         <Frame Name="FrmMain" Grid.Row="1" Margin="0,-1,0,0"
-               NavigationUIVisibility="Hidden" Focusable="False">
-        </Frame>
+               NavigationUIVisibility="Hidden" Focusable="False"/>
         <!-- Верхний бар -->
         <Border Background="#353535"/>
 

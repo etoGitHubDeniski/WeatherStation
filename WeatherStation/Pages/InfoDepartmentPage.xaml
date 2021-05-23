@@ -19,17 +19,32 @@
         </Grid.RowDefinitions>
 
         <!-- search -->
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource TextBlockLoginHeaderStyle}"
-                           Text="поиск по названию отделения"/>
-            <StackPanel Orientation="Horizontal" Width="500" Height="35">
-                <TextBlock Style="{StaticResource TextBlockLoginIconStyle}"
-                           Text="&#xF78B;"/>
-                <TextBox Style="{StaticResource TextBoxLoginStyle}"
-                         Name="TxbSearchInfoDepartment" Width="470"
-                         TextChanged="TxbSearchInfoDepartment_TextChanged"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel Margin="0,0,10,0">
+                <TextBlock Style="{StaticResource TextBlockLoginHeaderStyle}"
+                               Text="поиск по названию отделения"/>
+                <StackPanel Orientation="Horizontal" Width="300" Height="35">
+                    <TextBlock Style="{StaticResource TextBlockLoginIconStyle}"
+                               Text="&#xF78B;"/>
+                    <TextBox Style="{StaticResource TextBoxLoginStyle}"
+                             Name="TxbSearchInfoDepartment" Width="270"
+                             TextChanged="TxbSearchInfoDepartment_TextChanged"/>
+                </StackPanel>
+                <Rectangle Width="300" Style="{StaticResource RectangleStyle}"/>
             </StackPanel>
-            <Rectangle Width="500" Style="{StaticResource RectangleStyle}"/>
+            <StackPanel Margin="10,0,0,0">
+                <TextBlock Style="{StaticResource TextBlockLoginHeaderStyle}"
+                               Text="поиск по профилю отделения"/>
+                <StackPanel Orientation="Horizontal" Width="300" Height="35">
+                    <TextBlock Style="{StaticResource TextBlockLoginIconStyle}"
+                               Text="&#xF78B;"/>
+                    <TextBox Style="{StaticResource TextBoxLoginStyle}"
+                             Name="TxbSearchInfoDepartmentProfile" Width="270"
+                             TextChanged="TxbSearchInfoDepartment_TextChanged"/>
+                </StackPanel>
+                <Rectangle Width="300" Style="{StaticResource RectangleStyle}"/>
+            </StackPanel>
         </StackPanel>
 
         <!-- Доп инфа -->
@@ -67,7 +82,7 @@
                                         MinWidth="200">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Name="BtnLookInfoDepartment" Content="Посмотреть/Удалить"
+                            <Button Name="BtnLookInfoDepartment" Content="Посмотреть"
                                     FontSize="15" Height="28"
                                     Style="{StaticResource ButtonLoginStyle}"
                                     Template="{DynamicResource ButtonLoginControlTemplate}"

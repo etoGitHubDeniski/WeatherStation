@@ -12,23 +12,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WeatherStation.AppData;
-using WeatherStation.PagesDevice;
+using WeatherStation.PagesDepartment;
 
 namespace WeatherStation.Windows
 {
     /// <summary>
-    /// Логика взаимодействия для MoreInfoDeviceWindow.xaml
+    /// Логика взаимодействия для MoreInfoDepartmentWindow.xaml
     /// </summary>
-    public partial class MoreInfoDeviceWindow : Window
+    public partial class MoreInfoDepartmentWindow : Window
     {
-        public MoreInfoDeviceWindow()
+        public MoreInfoDepartmentWindow()
         {
             InitializeComponent();
 
             ControlClass.WeatherStationDataBase = new WeatherStationEntities();
 
-            ControlClass.FrameDevice = FrmDevice;
-            ControlClass.FrameDevice.Navigate(new DeviceInfoPage());
+            ControlClass.FrameDepartment = FrmDepartment;
+            ControlClass.FrameDepartment.Navigate(new DepartmentInfoPage());
         }
 
         private void BtnRollUp_Click(object sender, RoutedEventArgs e)
@@ -39,6 +39,12 @@ namespace WeatherStation.Windows
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        //Не костыль, а временное решение проблемы
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            this.Topmost = false;
         }
 
         private void BtnWinState_Click(object sender, RoutedEventArgs e)

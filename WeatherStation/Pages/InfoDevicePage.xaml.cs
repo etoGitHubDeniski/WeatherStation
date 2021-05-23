@@ -153,6 +153,7 @@ namespace WeatherStation.Pages
         private void BtnLookInfoDevice_Click(object sender, RoutedEventArgs e)
         {
             // Открытие окна с дополнительной информацией
+            ControlClass.LogicDepartmentDeviceInfo = 1;
             MoreInfoDeviceWindow moreInfoDeviceWindow = new MoreInfoDeviceWindow();
             moreInfoDeviceWindow.Show();
         }
